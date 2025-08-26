@@ -34,6 +34,7 @@ if [ "$DESTROY_ENVIRONMENT" = true ]; then
   fi
   echo "Destruindo o ambiente..."
   az group delete --name $RG_NAME --yes --no-wait
+  az group delete --name NetworkWatcherRG --yes --no-wait
   echo "Ambiente destruído."
   exit 0
 fi
@@ -150,7 +151,7 @@ else
 fi
 
 echo "Realizando o push da imagem Docker para o ACR..."
-docker push acrestudos.azurecr.io/simple-add:1.0.1
+docker push acrestudos.azurecr.io/simple-add:1.0.2
 
 if [ $? -eq 0 ]; then
   echo "Imagem Docker enviada com sucesso para o ACR."
