@@ -5,8 +5,8 @@ ACR_NAME="acrestudos"
 AKS_NAME="aksestudos"
 APPGW_NAME="appgw-estudos"
 DNS_ZONE="acrestudos.com.br"
-RG_NAME="rg-estudos_dev"
-RG_NAME_AKS_ADDONS="MC_rg-estudos_dev_aksestudos_brazilsouth"
+RG_NAME="rg-estudos"
+RG_NAME_AKS_ADDONS="MC_rg-estudos_aksestudos_brazilsouth"
 LOCATION="brazilsouth"
 DESTROY_ENVIRONMENT=${1:-false}
 COMMAND_TAG='az tag create --resource-id /subscriptions/$code --tags estudos=devops Status=Normal'
@@ -142,7 +142,7 @@ else
 fi
 
 echo "Obtendo credenciais do cluster AKS '$AKS_NAME'..."
-az aks get-credentials --resource-group $RG_NAME --name $AKS_NAME
+az aks get-credentials --resource-group $RG_NAME --name $AKS_NAME | yes
 if [ $? -eq 0 ]; then
   echo "Credenciais obtidas com sucesso."
 else
